@@ -1,0 +1,17 @@
+401\lv_bidi.o: ..\lvgl\src\misc\lv_bidi.c
+401\lv_bidi.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+401\lv_bidi.o: ..\lvgl\src\misc\lv_bidi.h
+401\lv_bidi.o: ..\lvgl\src\misc\../lv_conf_internal.h
+401\lv_bidi.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+401\lv_bidi.o: ..\lvgl\src\misc\../lv_conf_kconfig.h
+401\lv_bidi.o: ..\lvgl\examples\porting\../../lv_conf.h
+401\lv_bidi.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+401\lv_bidi.o: ..\lvgl\src\misc\lv_txt.h
+401\lv_bidi.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+401\lv_bidi.o: ..\lvgl\src\misc\lv_area.h
+401\lv_bidi.o: ..\lvgl\src\misc\../font/lv_font.h
+401\lv_bidi.o: ..\lvgl\src\misc\../font/lv_symbol_def.h
+401\lv_bidi.o: ..\lvgl\src\misc\lv_printf.h
+401\lv_bidi.o: ..\lvgl\src\misc\lv_types.h
+401\lv_bidi.o: ..\lvgl\src\misc\../misc/lv_mem.h
+401\lv_bidi.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

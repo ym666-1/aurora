@@ -1,0 +1,6 @@
+# 添加讯飞SDK的Python示例路径到系统路径
+SDK_PYTHON_PATH = '/home/abot/340406/src/robot_slam/Linux_awaken_exp1227_4d057adc/samples/python3'
+sys.path.append(SDK_PYTHON_PATH)
+
+# 现在可以直接导入py_iat
+import py_iat

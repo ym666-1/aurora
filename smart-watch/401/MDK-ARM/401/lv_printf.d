@@ -1,0 +1,10 @@
+401\lv_printf.o: ..\lvgl\src\misc\lv_printf.c
+401\lv_printf.o: ..\lvgl\src\misc\lv_printf.h
+401\lv_printf.o: ..\lvgl\src\misc\../lv_conf_internal.h
+401\lv_printf.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+401\lv_printf.o: ..\lvgl\src\misc\../lv_conf_kconfig.h
+401\lv_printf.o: ..\lvgl\examples\porting\../../lv_conf.h
+401\lv_printf.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+401\lv_printf.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+401\lv_printf.o: ..\lvgl\src\misc\lv_types.h
+401\lv_printf.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

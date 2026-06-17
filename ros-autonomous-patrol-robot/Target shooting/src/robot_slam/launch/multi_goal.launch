@@ -1,0 +1,7 @@
+<launch>
+  <node name="multi_goal" pkg="robot_slam" type="navigation_multi_goals1.0.py" output="screen">
+      <param name="goalListX" value="1.153, 0.155, 0.260, 1.046, 0.110, 0.245, 1.093, -0.020"/>
+      <param name="goalListY" value="-0.509, -0.550, -1.44, -1.74, -1.962, -2.732, -2.99, -3.32"/>
+      <param name="goalListYaw" value="0.0,  0.0,  0.0,  0.0, 0.0,  0.0,  0.0, 0.0"/>
+  </node>
+</launch>

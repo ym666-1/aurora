@@ -1,0 +1,146 @@
+TebLocalPlannerROS:
+
+  ############################################################
+  # 坐标和里程计
+  ############################################################
+  
+  odom_topic: /wheel_odom          # 里程计话题，用于机器人定位和姿态估计
+  map_frame: map                    # 全局地图坐标系
+
+
+  ############################################################
+  # 轨迹参数
+  ############################################################
+
+  teb_autosize: true               # 自动调整轨迹时间步长，适应不同场景
+  dt_ref: 0.25                     # 参考时间步长(s)，影响轨迹采样密度
+  dt_hysteresis: 0.1               # 时间步长调整的迟滞区间，防止频繁变化
+
+  # 小场地里不强制覆盖路径方向，减少边走边转
+  global_plan_overwrite_orientation: false   # 不强制覆盖全局路径的方向角
+
+  allow_init_with_backwards_motion: true     # 允许规划开始时向后运动，提高灵活性
+  max_global_plan_lookahead_dist: 1.2        # 最大向前查看全局路径的距离(m)
+  global_plan_viapoint_sep: -1               # 路径中间点间隔(-1表示自动)
+  global_plan_prune_distance: 0.25           # 修剪已走过路径的距离(m)
+  exact_arc_length: false                    # 是否使用精确弧长计算(性能优化)
+  feasibility_check_no_poses: 5              # 检查可行性时考虑的轨迹点数
+  publish_feedback: false                    # 是否发布反馈信息(调试用)
+
+
+  ############################################################
+  # 速度限制
+  # 提速：增加最大速度和加速度，同时保持可控
+  ############################################################
+
+  max_vel_x: 0.65                  # 最大前进速度(m/s) [提速]
+  max_vel_x_backwards: 0.30       # 最大后退速度(m/s)
+  max_vel_y: 0.35                # 最大横向速度(m/s)，全向底盘用
+  max_vel_theta: 1.8             # 最大角速度(rad/s) [大幅提速转向]
+
+  acc_lim_x: 0.55                 # 前进加速度限制(m/s^2) [提速响应]
+  acc_lim_y: 0.40                 # 横向加速度限制(m/s^2)
+  acc_lim_theta: 2.5             # 角加速度限制(rad/s^2) [加速转向响应]
+
+
+  ############################################################
+  # 目标容差
+  # move_base 只负责到目标框外，不负责最终塞进框
+  # 放宽 yaw 容差避免终点附近为对齐姿态反复微调
+  ############################################################
+
+  xy_goal_tolerance: 0.10         # 到达目标点的位置容差(m)
+  yaw_goal_tolerance: 0.35        # 到达目标点的姿态容差(rad) [放宽，避免终点打转]
+  free_goal_vel: false            # 到达目标后是否允许自由运动
+  complete_global_plan: true      # 是否执行完整的全局规划
+
+
+  ############################################################
+  # 全向底盘
+  ############################################################
+
+  min_turning_radius: 0.0         # 最小转弯半径(0表示全向移动)
+  wheelbase: 0.0                  # 轴距(全向底盘设为0)
+  cmd_angle_instead_rotvel: false # 是否使用角度命令代替角速度
+
+  weight_kinematics_nh: 0.0       # 非完整约束权重(全向底盘设为0)
+  weight_kinematics_forward_drive: 0.0  # 前进驱动约束权重(全向底盘无限制)
+  weight_kinematics_turning_radius: 0.0 # 转弯半径约束权重(全向底盘忽略)
+
+
+  ############################################################
+  # 机器人 footprint
+  # 与 costmap_common_params.yaml 保持一致
+  ############################################################
+
+  footprint_model:
+    type: "polygon"               # 多边形模型
+    vertices: [[0.205, 0.18], [0.205, -0.18], [-0.19, -0.18], [-0.19, 0.18]]  # 机器人轮廓坐标
+
+
+  ############################################################
+  # 障碍物约束
+  # 降低障碍物权重防止近障碍物振荡，同时保持安全距离
+  ############################################################
+
+  min_obstacle_dist: 0.05         # 最小安全距离(m) [收紧，机器人小不怕近]
+  inflation_dist: 0.05            # 障碍物膨胀距离 [减小，避免挡板前不敢走]
+
+  include_costmap_obstacles: true # 是否包含costmap中的障碍物信息
+  costmap_obstacles_behind_robot_dist: 0.35  # 考虑机器人后方障碍物的距离(m)
+  obstacle_poses_affected: 25     # 影响轨迹优化的障碍物点数
+
+
+  ############################################################
+  # 优化器
+  ############################################################
+
+  no_inner_iterations: 5          # 内部优化迭代次数
+  no_outer_iterations: 4          # 外部优化迭代次数
+  optimization_activate: true     # 激活优化器
+  optimization_verbose: false     # 是否输出详细优化信息
+
+  penalty_epsilon: 0.02           # 惩罚函数边界阈值
+
+  # 速度约束权重
+  weight_max_vel_x: 2             # 最大前进速度约束权重
+  weight_max_vel_y: 2             # 最大横向速度约束权重
+  weight_max_vel_theta: 1         # 最大角速度约束权重
+
+  # 加速度约束权重
+  weight_acc_lim_x: 1             # 前进加速度约束权重
+  weight_acc_lim_y: 1             # 横向加速度约束权重
+  weight_acc_lim_theta: 0.8         # 角加速度约束权重
+
+  # 目标优化权重
+  weight_optimaltime: 3           # 时间最优权重 [增大，优先快速路径]
+  weight_shortest_path: 0         # 路径最短权重(0表示不优化路径长度)
+
+  # 障碍物权重 [大幅降低以防障碍物近时不敢走]
+  weight_obstacle: 10             # 障碍物避让权重 [从35降到10，相信全局路径，不再自己吓自己]
+  weight_inflation: 0.1           # 膨胀区域权重 [降低]
+  weight_viapoint: 1              # 路径点跟随权重
+
+
+  ############################################################
+  # Homotopy
+  # 小场地先关闭多路径，避免反复换路径
+  ############################################################
+
+  enable_homotopy_class_planning: false  # 关闭多重路径规划(小场地避免路径切换)
+  enable_multithreading: true            # 启用多线程优化
+  max_number_classes: 2                  # 最大路径分类数量
+
+
+  ############################################################
+  # 恢复行为
+  ############################################################
+
+  shrink_horizon_backup: true      # 启用视野收缩备份行为
+  shrink_horizon_min_duration: 5   # 视野收缩最小持续时间(s)
+
+  oscillation_recovery: true       # 启用振荡恢复机制
+  oscillation_v_eps: 0.05          # 振荡检测的速度阈值(m/s) [提高，更快检测振荡]
+  oscillation_omega_eps: 0.12      # 振荡检测的角速度阈值(rad/s) [提高]
+  oscillation_recovery_min_duration: 3   # 振荡恢复最小持续时间(s) [缩短]
+  oscillation_filter_duration: 3   # 振荡滤波时间(s) [缩短]

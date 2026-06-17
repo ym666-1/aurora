@@ -1,0 +1,39 @@
+# Keil MDK-ARM 生成文件
+MDK-ARM/*.dep
+MDK-ARM/*.htm
+MDK-ARM/*.lnp
+MDK-ARM/*.sct
+MDK-ARM/*.d
+MDK-ARM/*.o
+MDK-ARM/*.lst
+MDK-ARM/*.map
+MDK-ARM/*.axf
+MDK-ARM/*.crf
+MDK-ARM/*.tra
+MDK-ARM/*.iex
+MDK-ARM/*.lin
+MDK-ARM/EventRecorderStub.scvd
+MDK-ARM/*.uvguix.*
+MDK-ARM/*.uvoptx
+MDK-ARM/Objects/
+MDK-ARM/Listings/
+MDK-ARM/DebugConfig/
+MDK-ARM/RTE/
+
+# CubeMX 生成的临时文件
+*.bak
+*.tmp
+
+# 编译输出
+*.elf
+*.hex
+*.bin
+*.map
+
+# Windows 系统文件
+Thumbs.db
+Desktop.ini
+*.lnk
+
+# 备份文件
+*_extracted.txt

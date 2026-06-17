@@ -1,0 +1,15 @@
+401\qrcodegen.o: ..\lvgl\src\extra\libs\qrcode\qrcodegen.c
+401\qrcodegen.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+401\qrcodegen.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+401\qrcodegen.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+401\qrcodegen.o: ..\lvgl\src\extra\libs\qrcode\qrcodegen.h
+401\qrcodegen.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+401\qrcodegen.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+401\qrcodegen.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+401\qrcodegen.o: ..\lvgl\src\extra\libs\qrcode\../../../misc/lv_assert.h
+401\qrcodegen.o: ..\lvgl\src\extra\libs\qrcode\../../../misc/../lv_conf_internal.h
+401\qrcodegen.o: ..\lvgl\src\extra\libs\qrcode\../../../misc/../lv_conf_kconfig.h
+401\qrcodegen.o: ..\lvgl\examples\porting\../../lv_conf.h
+401\qrcodegen.o: ..\lvgl\src\extra\libs\qrcode\../../../misc/lv_log.h
+401\qrcodegen.o: ..\lvgl\src\extra\libs\qrcode\../../../misc/lv_types.h
+401\qrcodegen.o: ..\lvgl\src\extra\libs\qrcode\../../../misc/lv_mem.h
